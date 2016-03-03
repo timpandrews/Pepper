@@ -1,11 +1,37 @@
 /*Custom styles for this template */
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 .navbar {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
-/*Test Styles*/
-.test { color: #6495ed }
+.jumbotron {
+    background-color: #3fb53f;
+}
+
+.logo {
+    height: 45px;
+    margin-top: -13px;
+}
+
+.center {
+    text-align: center;
+}
+
+/*Landing Page - Pricing Section*/
+.amount {
+    font-size: xx-large;
+    font-weight: bold;
+    padding: 2px;
+}
+
+.pricing {
+    height: 325px;
+}
+
+.btn-pricing{
+    position: absolute;
+    bottom:0;
+}
