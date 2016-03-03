@@ -4,6 +4,8 @@ static_root/*
 
 media_root/*
 
+pepperVenv/*
+
 *.pyc
 
 
