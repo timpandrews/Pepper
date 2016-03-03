@@ -1,0 +1,11 @@
+/*Custom styles for this template */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.navbar {
+  margin-bottom: 20px;
+}
+
+/*Test Styles*/
+.test { color: #6495ed }
