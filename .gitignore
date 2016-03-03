@@ -1,11 +1,9 @@
 .idea/*
 
-test1_venv/*
-
 static_root/*
 
 media_root/*
 
 *.pyc
 
-app1/migrations/*
+

@@ -35,3 +35,12 @@ def db(request):
         }
 
     return render(request, "db.html", context)
+
+def dashboard(request):
+
+    msg = "Welcome"
+    context = {
+        "msg": msg,
+    }
+
+    return render(request, "dashboard.html", context)
