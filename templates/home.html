@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 
 {% block jumbotron %}
     <div class="jumbotron">
-        <h1 class="center">Garden Share</h1>
+        <p class="center"><img class="logo_jumbotron" src="{% static 'img/gardenShare_logoBlack.png' %}"></p>
         <p>Garden Share lets you track all you gardings sucess (and failures) and if you like you can share your gardening experience with your friends and followers.</p>
         <p class="center">
             <a class="btn btn-lg btn-default" href="#features" role="button">Learn More &raquo;</a>
@@ -24,7 +25,7 @@
         </div> <!-- /col -->
         <div class="col-sm-4">
             <p class="center"><i class="fa fa-share-alt fa-3x"></i></p>
-            <p class="lead center">Share Your Garden</p>
+            <p class="center">Share Your Garden</p>
             <p>Share you garden with the world.  Or just share it with a few select friends.  You control what you share and who you share it with.</p>
         </div> <!-- /col -->
         <div class="col-sm-4">
