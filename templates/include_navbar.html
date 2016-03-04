@@ -15,10 +15,12 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#features">Features</a></li>
                 <li><a href="#pricing">Pricing</a></li>
-                <li><a href="{% url 'db' %}">db</a></li>
+                <!--<li><a href="{ % url 'db' %}">db</a></li>-->
+                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if request.user.is_authenticated %}
+                    <li class="welcomeUser">Welcome {{ user }}</li>
                     <li><a href="{% url 'auth_logout' %}">Logout</a></li>
                 {% else %}
                     <li><a href="{% url 'auth_login' %}">Login</a></li>
