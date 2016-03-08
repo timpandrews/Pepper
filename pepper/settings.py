@@ -11,10 +11,10 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+from sqlalchemy import create_engine
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-print "x: ", BASE_DIR
 
 
 # Quick-start development settings - unsuitable for production
@@ -98,9 +98,7 @@ DATABASES = {
 
 # SQLAlchemy
 # http://docs.sqlalchemy.org/en/latest/index.html
-# from sqlalchemy import create_engine
-# engine = create_engine(os.path.join(BASE_DIR, 'db.sqlite3'))
-
+SQL = create_engine('sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3'))
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
