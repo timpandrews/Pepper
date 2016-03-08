@@ -1,5 +1,9 @@
 from django.shortcuts import render
 
+# imports for dashboard.py
+# import os
+# from sqlalchemy import create_engine
+
 from .forms import db_form
 
 # Create your views here.
@@ -38,9 +42,23 @@ def db(request):
 
 def dashboard(request):
 
+    print "dashboard"
+
+    from sqlalchemy import create_engine
+    engine = create_engine('sqlite:////Users/timandrews/Desktop/apps/pepper/db.sqlite3')
+    qry = """SELECT name from django_site where id = 1"""
+    print qry
+    cursor = engine.connect()
+    rp = cursor.execute(qry)
+    results = rp.fetchall()
+    print results
+    print results[0]
+
     msg = "Welcome"
     context = {
         "msg": msg,
+        "results": results[0],
     }
+
 
     return render(request, "dashboard.html", context)
