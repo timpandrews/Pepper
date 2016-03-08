@@ -24,8 +24,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', pepperApp.views.home, name='home'),
     url(r'^home/', pepperApp.views.home, name='home'),
-    url(r'^db/',  pepperApp.views.db, name='db'),
-    url(r'^dashboard/',  pepperApp.views.dashboard, name='dashboard'),
+    url(r'^db/', pepperApp.views.db, name='db'),
+    url(r'^dashboard/', pepperApp.views.dashboard, name='dashboard'),
     url(r'^accounts/', include('registration.backends.default.urls')),
 ]
 
