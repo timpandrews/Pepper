@@ -18,7 +18,7 @@
                 <p>{{ instance.timestamp }}</p>
                 <p>{{ instance.updated }}</p>
 
-                <a href="{% url 'testDb' %}"><i class="fa fa-list"></i> Return to List</a>
+                <a href="/testDb"><i class="fa fa-list"></i> Return to List</a>
 
             {% elif msg = 'list' %}
 
@@ -35,7 +35,7 @@
                     {% for obj in object_list %}
 
                         <tr>
-                            <td class="center"><a href="{% url 'detail' id=obj.id %}"><i class="fa fa-external-link"></i></a></td>
+                            <td class="center"><a href="/testDb/{{ obj.id }}/"><i class="fa fa-external-link"></i></a></td>
                             <td>{{ obj.id }}</td>
                             <td>{{ obj.fieldChar }}</td>
                             <td>{{ obj.fieldInt }}</td>
