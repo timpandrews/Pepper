@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import db
+from .models import db, testDb
 
 
 class db_form(forms.ModelForm):
@@ -17,3 +17,8 @@ class db_form(forms.ModelForm):
     #     if "*" in username:
     #         raise forms.ValidationError("Please do not use * in username")
     #     return username
+
+class testDbForm(forms.ModelForm):
+    class Meta:
+        model = testDb
+        fields = ['fieldChar','fieldInt']

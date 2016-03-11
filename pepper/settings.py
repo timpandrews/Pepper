@@ -100,6 +100,7 @@ DATABASES = {
 # http://docs.sqlalchemy.org/en/latest/index.html
 SQL = create_engine('sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3'))
 
+
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
 

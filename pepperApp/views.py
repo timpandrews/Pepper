@@ -1,7 +1,9 @@
 from django.conf import settings
-from django.shortcuts import render
+from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404
 
-from .forms import db_form
+from .forms import db_form, testDbForm
+from .models import testDb
 
 # Create your views here.
 def home(request):
@@ -39,13 +41,13 @@ def db(request):
 
 def dashboard(request):
 
-    qry = """SELECT name from django_site where id = 1"""
-    print qry
+    qry = """SELECT last_login, email, username from auth_user where id = 1"""
+    # print qry
     cursor = settings.SQL.connect()
     rp = cursor.execute(qry)
     results = rp.fetchall()
-    print results
-    print results[0]
+    # print results
+    # print results[0]
 
     msg = "Welcome"
     context = {
@@ -55,3 +57,50 @@ def dashboard(request):
 
 
     return render(request, "dashboard.html", context)
+
+def testDb_create(request):
+    form = testDbForm(request.POST or None)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+
+    msg = "create"
+    context = {
+        "msg": msg,
+        "form": form,
+    }
+    return render(request, "testDb.html", context)
+
+def testDb_detail(request, id):
+    # instance = testDb.objects.get(id=1) ## returns error if not found
+    instance = get_object_or_404(testDb, id=id)
+    msg = "detail"
+    context = {
+        "msg": msg,
+        "instance": instance,
+    }
+    return render(request, "testDb.html", context)
+
+def testDb_list(request):
+    queryset = testDb.objects.all()
+    msg = "list"
+    context = {
+        "object_list": queryset,
+        "msg": msg,
+    }
+    print"wtf"
+    return render(request, "testDb.html", context)
+
+def testDb_update(request):
+    msg = "update"
+    context = {
+        "msg": msg,
+    }
+    return render(request, "testDb.html", context)
+
+def testDb_delete(request):
+    msg = "delete"
+    context = {
+        "msg": msg,
+    }
+    return render(request, "testDb.html", context)

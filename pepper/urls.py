@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^db/', pepperApp.views.db, name='db'),
     url(r'^dashboard/', pepperApp.views.dashboard, name='dashboard'),
     url(r'^accounts/', include('registration.backends.default.urls')),
+    url(r'^testDb/', include(('pepperApp.urls'))),
 ]
 
 if settings.DEBUG:
