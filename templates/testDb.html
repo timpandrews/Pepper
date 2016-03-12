@@ -10,6 +10,14 @@
             <h1>TestDb</h1>
             <h3>{{ msg }}</h3>
 
+{#            {% if messages %}#}
+{#                <ul class="messages">#}
+{#                    {% for message in messages %}#}
+{#                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>#}
+{#                    {% endfor %}#}
+{#                </ul>#}
+{#            {% endif %}#}
+
             {% if msg = 'detail' %}
 
                 <h4>{{ instance.id }}</h4>
@@ -18,9 +26,13 @@
                 <p>{{ instance.timestamp }}</p>
                 <p>{{ instance.updated }}</p>
 
-                <a href="/testDb"><i class="fa fa-list"></i> Return to List</a>
+                <a href="/testDb/create" class="btn btn-success"><i class="fa fa-plus"></i> Add New</a>
+                <a href="/testDb"class="btn btn-success"><i class="fa fa-list"></i> Return to List</a>
 
             {% elif msg = 'list' %}
+
+                <a href="/testDb/create" class="btn btn-success"><i class="fa fa-plus"></i> Add New</a>
+                <br><br>
 
                 <table class="table table-striped table-bordered table-hover table-condensed">
                     <tr>
@@ -35,7 +47,11 @@
                     {% for obj in object_list %}
 
                         <tr>
-                            <td class="center"><a href="/testDb/{{ obj.id }}/"><i class="fa fa-external-link"></i></a></td>
+                            <td class="center">
+                                <a href="{{ obj.get_absolute_url }}"><i class="fa fa-external-link"></i></a>
+                                <a href="/testDb/{{ obj.id }}/edit/"><i class="fa fa-pencil"></i></a>
+                                <a href="/testDb/{{ obj.id }}/delete/"><i class="fa fa-trash"></i></a>
+                            </td>
                             <td>{{ obj.id }}</td>
                             <td>{{ obj.fieldChar }}</td>
                             <td>{{ obj.fieldInt }}</td>
@@ -47,6 +63,8 @@
 
                 </table>
 
+                <a href="/testDb/create" class="btn btn-success"><i class="fa fa-plus"></i> Add New</a>
+
             {% elif msg = 'create' %}
                 <div class='row'>
                     <div class='col-sm-6'>
@@ -55,6 +73,20 @@
                             {{ form|crispy }}
 
                             <input class="btn btn-success" type="submit" value="Add New" />
+                            <a href="/testDb" class="btn btn-success"><i class="fa fa-times"></i> Cancel</a>
+                        </form>
+                    </div>
+                </div>
+
+            {% elif msg = 'update' %}
+                <div class='row'>
+                    <div class='col-sm-6'>
+                        <form method="POST" action="">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+
+                            <input class="btn btn-success" type="submit" value="Update" />
+                            <a href="/testDb" class="btn btn-success"><i class="fa fa-times"></i> Cancel</a>
                         </form>
                     </div>
                 </div>

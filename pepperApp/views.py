@@ -1,6 +1,7 @@
 from django.conf import settings
-from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.contrib import messages
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404, redirect
 
 from .forms import db_form, testDbForm
 from .models import testDb
@@ -63,6 +64,10 @@ def testDb_create(request):
     if form.is_valid():
         instance = form.save(commit=False)
         instance.save()
+        messages.success(request, "New Record Created!")
+        return HttpResponseRedirect(instance.get_absolute_url())
+    else:
+        messages.error(request, "Not Created.")
 
     msg = "create"
     context = {
@@ -91,16 +96,27 @@ def testDb_list(request):
     print"wtf"
     return render(request, "testDb.html", context)
 
-def testDb_update(request):
+def testDb_update(request, id):
+    instance = get_object_or_404(testDb, id=id)
+    form = testDbForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+        messages.success(request, "Record Updated!")
+        return HttpResponseRedirect(instance.get_absolute_url())
+    else:
+        messages.error(request, "Not Updated.")
+
     msg = "update"
     context = {
         "msg": msg,
+        "instance": instance,
+        "form": form,
     }
     return render(request, "testDb.html", context)
 
-def testDb_delete(request):
-    msg = "delete"
-    context = {
-        "msg": msg,
-    }
-    return render(request, "testDb.html", context)
+def testDb_delete(request, id):
+    instance = get_object_or_404(testDb, id=id)
+    instance.delete()
+    messages.success(request, "Record Deleted!")
+    return redirect('list')

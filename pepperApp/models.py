@@ -23,6 +23,9 @@ class testDb(models.Model):
     def __unicode__(self):
         return self.fieldChar
 
+    def get_absolute_url(self):
+        return "/testDb/%s/" %(self.id)
+        # return reverse("detail", kwargs={"id": self.id})
 
 
 
