@@ -3,6 +3,9 @@ from django import forms
 from .models import db, testDb
 
 
+
+
+# Sample Forms - remove when no longer needed
 class db_form(forms.ModelForm):
     class Meta:
         model = db

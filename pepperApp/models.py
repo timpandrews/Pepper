@@ -3,6 +3,19 @@ from __future__ import unicode_literals
 from django.db import models
 from django.core.urlresolvers import reverse
 
+
+
+class tblActivity(models.Model):
+    userID = models.IntegerField()
+    activityTimeStamp = models.DateTimeField(auto_now=False, auto_now_add=True)
+    activityUpdate = models.DateTimeField(auto_now=True, auto_now_add=False)
+    activityTitle = models.CharField(max_length=75)
+    activityDescription = models.TextField(blank=True)
+
+    def __unicode__(self):
+        return self.id
+
+
 # Sample Models - Remove when they are no longer needed
 class db(models.Model):
     username = models.CharField(max_length=30, blank=False)
