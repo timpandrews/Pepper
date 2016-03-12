@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.core.urlresolvers import reverse
 
-# Create your models here.
+# Sample Models - Remove when they are no longer needed
 class db(models.Model):
     username = models.CharField(max_length=30, blank=False)
     email = models.EmailField(blank=False)

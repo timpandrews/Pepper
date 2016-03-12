@@ -6,7 +6,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .forms import db_form, testDbForm
 from .models import testDb
 
-# Create your views here.
+
 def home(request):
 
     msg = "Welcome"
@@ -16,6 +16,18 @@ def home(request):
 
     return render(request, "home.html", context)
 
+
+def diary(request):
+
+    msg = "Plant Diary"
+    context = {
+        "msg": msg,
+    }
+
+    return render(request, "diary.html", context)
+
+
+# Sample Views (Remove once they are no longer needed)
 def db(request):
 
     msg = "Welcome"

@@ -25,7 +25,7 @@ urlpatterns = [
     url(r'^$', pepperApp.views.home, name='home'),
     url(r'^home/', pepperApp.views.home, name='home'),
     url(r'^db/', pepperApp.views.db, name='db'),
-    url(r'^dashboard/', pepperApp.views.dashboard, name='dashboard'),
+    url(r'^diary/', pepperApp.views.diary, name='diary'),
     url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^testDb/', include(('pepperApp.urls'))),
 ]
